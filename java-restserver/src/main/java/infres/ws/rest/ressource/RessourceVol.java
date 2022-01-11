@@ -20,7 +20,7 @@ public class RessourceVol {
 
     @GET
     @Path("/{idVol}")
-    @Produces(MediaType.APPLICATION_XML)
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Vol getVol(@PathParam("idCompany") int idCompany, @PathParam("idVol") int idVol) {
         return new Vol(idCompany, idVol, new Date(), "Paris", "Uzes");
     }

@@ -19,7 +19,7 @@ public class RessourceCompany {
 
     @GET
     @Path("/{idCompany}")
-    @Produces(MediaType.APPLICATION_XML)
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Company getCompany(@PathParam("idCompany") int idCompany) {
         return new Company("Airbus", idCompany);
     }

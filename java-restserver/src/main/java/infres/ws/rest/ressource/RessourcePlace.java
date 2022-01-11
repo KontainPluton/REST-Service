@@ -1,10 +1,8 @@
 package infres.ws.rest.ressource;
 
 import infres.ws.rest.object.Place;
-import org.junit.jupiter.api.Test;
 
 import javax.ws.rs.*;
-import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
 import java.util.Random;
 
