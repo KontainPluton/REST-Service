@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>infres.ws.rest</groupId>
-  <artifactId>java-restserver</artifactId>e
+  <artifactId>java-restserver</artifactId>
   <version>-DinteractiveMode=false</version>
   <packaging>war</packaging>
 
