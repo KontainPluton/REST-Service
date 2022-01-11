@@ -50,6 +50,11 @@
       <groupId>io.grpc</groupId>
       <artifactId>grpc-stub</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.jboss.resteasy</groupId>
+      <artifactId>resteasy-jaxb-provider</artifactId>
+      <version>5.0.1.Final</version>
+    </dependency>
   </dependencies>
 
   <build>
