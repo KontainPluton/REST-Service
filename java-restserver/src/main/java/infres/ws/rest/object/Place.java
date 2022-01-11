@@ -1,5 +1,6 @@
 package infres.ws.rest.object;
 
+import javax.json.bind.annotation.JsonbProperty;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -20,34 +21,42 @@ public class Place {
         this.price = price;
     }
 
+    @JsonbProperty("numero_place")
     public int getNumPlace() {
         return numPlace;
     }
 
+    @JsonbProperty("numero_place")
     public void setNumPlace(int numPlace) {
         this.numPlace = numPlace;
     }
 
+    @JsonbProperty("prix")
     public double getPrice() {
         return price;
     }
 
+    @JsonbProperty("prix")
     public void setPrice(double price) {
         this.price = price;
     }
 
+    @JsonbProperty("company")
     public String getCompany() {
         return company;
     }
 
+    @JsonbProperty("company")
     public void setCompany(String company) {
         this.company = company;
     }
 
+    @JsonbProperty("id_vol")
     public int getIdVol() {
         return idVol;
     }
 
+    @JsonbProperty("id_vol")
     public void setIdVol(int idVol) {
         this.idVol = idVol;
     }

@@ -1,11 +1,10 @@
 package infres.ws.rest.ressource;
 
 import infres.ws.rest.object.Place;
+import org.junit.jupiter.api.Test;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
 import java.util.Random;
 
@@ -20,8 +19,9 @@ public class RessourcePlace {
 
     @GET
     @Path("/{numeroPlace}")
-    @Produces(MediaType.APPLICATION_XML)
-    public Place getPlace(@PathParam("idCompany") int idCompany, @PathParam("numeroPlace") int numeroPlace, @PathParam("idVol") int idVol) {
-        return new Place("Airbus", idVol, numeroPlace, new Random().nextDouble() * 20);
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public Place getPlace(@HeaderParam("content-type") String contentType, @PathParam("idCompany") int idCompany, @PathParam("numeroPlace") int numeroPlace, @PathParam("idVol") int idVol) {
+
+        return new Place("Airbus", idVol, numeroPlace, new Random().nextDouble() * 2000);
     }
 }
