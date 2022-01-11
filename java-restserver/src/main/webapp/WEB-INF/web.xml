@@ -5,9 +5,7 @@
 <web-app>
   <servlet>
     <servlet-name>java-restserver</servlet-name>
-    <servlet-class>
-      org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
-    </servlet-class>
+    <servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
     <init-param>
       <param-name>javax.ws.rs.Application</param-name>
       <param-value>infres.ws.rest.HelloApplication</param-value>
