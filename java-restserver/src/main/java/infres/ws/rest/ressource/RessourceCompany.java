@@ -7,6 +7,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.Random;
 
 @Path("/compagnies")
 public class RessourceCompany {
@@ -14,13 +15,13 @@ public class RessourceCompany {
     @GET
     @Produces(MediaType.TEXT_HTML)
     public String getAllCompany() {
-        return "<p>Pas de vol pour l'instant</p>";
+        return "<p>Pas de compagnie pour l'instant</p>";
     }
 
     @GET
-    @Path("/{idCompany}")
+    @Path("/{company}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Company getCompany(@PathParam("idCompany") int idCompany) {
-        return new Company("Airbus", idCompany);
+    public Company getCompany(@PathParam("company") String company) {
+        return new Company(company, new Random().nextInt());
     }
 }

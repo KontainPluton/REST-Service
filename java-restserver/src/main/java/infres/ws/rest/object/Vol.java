@@ -7,7 +7,7 @@ import java.util.Date;
 @XmlRootElement
 public class Vol {
 
-    private int company;
+    private String company;
     private int numVol;
     private Date date;
     private String aeroportDepart;
@@ -17,7 +17,7 @@ public class Vol {
 
     }
 
-    public Vol(int company, int numVol, Date date, String aeroportDepart, String aeroportArrive) {
+    public Vol(String company, int numVol, Date date, String aeroportDepart, String aeroportArrive) {
         this.company = company;
         this.numVol = numVol;
         this.date = date;
@@ -26,12 +26,12 @@ public class Vol {
     }
 
     @JsonbProperty("company")
-    public int getCompany() {
+    public String getCompany() {
         return company;
     }
 
     @JsonbProperty("company")
-    public void setCompany(int company) {
+    public void setCompany(String company) {
         this.company = company;
     }
 
