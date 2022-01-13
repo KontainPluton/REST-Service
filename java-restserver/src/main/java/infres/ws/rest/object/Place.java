@@ -10,15 +10,17 @@ public class Place {
     private int idVol;
     private int numPlace;
     private double price;
+    private boolean available;
 
     public Place() {
     }
 
-    public Place(String company, int idVol, int numPlace, double price) {
+    public Place(String company, int idVol, int numPlace, double price, boolean available) {
         this.company = company;
         this.idVol = idVol;
         this.numPlace = numPlace;
         this.price = price;
+        this.available = available;
     }
 
     @JsonbProperty("numero_place")
@@ -59,5 +61,15 @@ public class Place {
     @JsonbProperty("id_vol")
     public void setIdVol(int idVol) {
         this.idVol = idVol;
+    }
+
+    @JsonbProperty("available")
+    public boolean isAvailable() {
+        return available;
+    }
+
+    @JsonbProperty("available")
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 }
