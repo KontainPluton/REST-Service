@@ -6,36 +6,48 @@ import infres.ws.rest.object.Company;
 import infres.ws.rest.object.RoomHotel;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import org.json.JSONObject;
 
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-import javax.ws.rs.FormParam;
-import javax.ws.rs.GET;
-import javax.ws.rs.NotFoundException;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.json.Json;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Path("/rooms")
 public class RessourceRoomHotel {
 
     @GET
-    @Produces(MediaType.TEXT_HTML)
-    public String getAllRooms() {
-        return "<h2>Désolé, nous ne proposons pas ce service. (trop compliqué)</h2>" +
-                "<p>Essayez avec un numéro de chambre spécifique</p>";
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public List<RoomHotel> getAllRooms() {
+        ArrayList<RoomHotel> rooms = new ArrayList<>();
+        ManagedChannel channel = getChannel();
+
+        BookHotelRoomGrpc.BookHotelRoomBlockingStub bookHotelRoomService = BookHotelRoomGrpc.newBlockingStub(channel);
+        BookHotelRoomOuterClass.Empty empty= BookHotelRoomOuterClass.Empty.newBuilder().build();
+
+        BookHotelRoomOuterClass.RoomNumbers roomNumbers = bookHotelRoomService.getAllRoom(empty);
+
+
+        for(BookHotelRoomOuterClass.RoomNumber room : roomNumbers.getRoomNumberList()) {
+            rooms.add(getRoom(room.getNumero()));
+        }
+
+        channel.shutdown();
+        return rooms;
     }
 
     @GET
     @Path("/{roomNumber}")
-    @Produces(MediaType.APPLICATION_XML)
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public RoomHotel getRoom(@PathParam("roomNumber") int roomNumber) {
+        ManagedChannel channel = getChannel();
 
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8080)
-                .usePlaintext()
-                .build();
         BookHotelRoomGrpc.BookHotelRoomBlockingStub bookHotelRoomService = BookHotelRoomGrpc.newBlockingStub(channel);
         BookHotelRoomOuterClass.RoomNumber roomN = BookHotelRoomOuterClass.RoomNumber.newBuilder()
                 .setNumero(roomNumber)
@@ -53,25 +65,24 @@ public class RessourceRoomHotel {
 
     @POST
     @Path("/{roomNumber}")
-    @Produces(MediaType.TEXT_HTML)
-    public String bookRoom(@PathParam("roomNumber") int roomNumber,
-            @FormParam("dateDebut") String dateDebut,
-            @FormParam("dateFin") String dateFin) {
+    @Produces(MediaType.APPLICATION_JSON)
+    public boolean bookRoom(@PathParam("roomNumber") int roomNumber, String strJson) {
+        ManagedChannel channel = getChannel();
+        JSONObject json = new JSONObject(strJson);
+        String dateArrive = json.getString("dateArrive");
+        String dateDepart = json.getString("dateDepart");
 
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8080)
-                .usePlaintext()
-                .build();
         BookHotelRoomGrpc.BookHotelRoomBlockingStub bookHotelRoomService = BookHotelRoomGrpc.newBlockingStub(channel);
 
         BookHotelRoomOuterClass.Dates debut = BookHotelRoomOuterClass.Dates.newBuilder()
-                .setDay(1)
-                .setMonth(11)
-                .setYear(1998)
+                .setDay(Integer.parseInt(dateArrive.split("-")[2]))
+                .setMonth(Integer.parseInt(dateArrive.split("-")[1]))
+                .setYear(Integer.parseInt(dateArrive.split("-")[0]))
                 .build();
         BookHotelRoomOuterClass.Dates fin = BookHotelRoomOuterClass.Dates.newBuilder()
-                .setDay(18)
-                .setMonth(11)
-                .setYear(1998)
+                .setDay(Integer.parseInt(dateDepart.split("-")[2]))
+                .setMonth(Integer.parseInt(dateDepart.split("-")[1]))
+                .setYear(Integer.parseInt(dateDepart.split("-")[0]))
                 .build();
         BookHotelRoomOuterClass.Booking booking = BookHotelRoomOuterClass.Booking.newBuilder()
                 .setNumero(roomNumber)
@@ -83,13 +94,15 @@ public class RessourceRoomHotel {
             BookHotelRoomOuterClass.Book bookResult = bookHotelRoomService.bookRoom(booking);
             channel.shutdown();
 
-            if (bookResult.getBookStatus()) {
-                return "<p>Bravo vous avez réservé</p>";
-            } else {
-                return "<p>Désolé, la chambre n'est pas disponible pour ces dates ;)</p>";
-            }
+            return bookResult.getBookStatus();
         } catch (Exception e) {
             throw new NotFoundException();
         }
+    }
+
+    private ManagedChannel getChannel() {
+        return ManagedChannelBuilder.forAddress("localhost", 8080)
+                .usePlaintext()
+                .build();
     }
 }

@@ -1,5 +1,6 @@
 package infres.ws.rest.object;
 
+import javax.json.bind.annotation.JsonbProperty;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import infres.ws.grpc.BookHotelRoomOuterClass;
@@ -26,26 +27,32 @@ public class RoomHotel {
         this.price = p;
     }
 
+    @JsonbProperty("room_number")
     public int getRoomNumber() {
         return roomNumber;
     }
 
+    @JsonbProperty("room_number")
     public void setRoomNumber(int roomNumber) {
         this.roomNumber = roomNumber;
     }
 
+    @JsonbProperty("type")
     public BookHotelRoomOuterClass.RoomType getType() {
         return type;
     }
 
+    @JsonbProperty("type")
     public void setType(BookHotelRoomOuterClass.RoomType type) {
         this.type = type;
     }
 
+    @JsonbProperty("price")
     public float getPrice() {
         return price;
     }
 
+    @JsonbProperty("price")
     public void setPrice(float price) {
         this.price = price;
     }

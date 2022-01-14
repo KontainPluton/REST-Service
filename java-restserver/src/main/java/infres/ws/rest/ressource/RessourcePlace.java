@@ -7,7 +7,6 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 @Path("compagnies/{company}/vols/{idVol}/places")
 public class RessourcePlace {
@@ -21,8 +20,29 @@ public class RessourcePlace {
     @GET
     @Path("/{numeroPlace}")
     @Produces({MediaType.APPLICATION_JSON})
-    public Place getPlace(@PathParam("company") String company, @PathParam("numeroPlace") int numeroPlace, @PathParam("idVol") int idVol) {
-        System.out.println("Demande d'un la place " + numeroPlace);
-        return new Place(company, idVol, numeroPlace, new Random().nextDouble() * 2000, new Random().nextBoolean());
+    public Place getPlace(@PathParam("numeroPlace") int numeroPlace) {
+        ArrayList<Place> places = Bdd.getInstance().getPlaces();
+        for(Place place : places ){
+            if(place.getNumPlace() == numeroPlace) {
+                return place;
+            }
+        }
+        return null;
     }
+
+    @POST
+    @Path("/{numeroPlace}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public boolean bookPlace(@PathParam("numeroPlace") int numeroPlace){
+        ArrayList<Place> places = Bdd.getInstance().getPlaces();
+        for(Place place : places ){
+            if (place.getNumPlace() == numeroPlace && place.isAvailable())
+            {
+                place.setAvailable(false);
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
