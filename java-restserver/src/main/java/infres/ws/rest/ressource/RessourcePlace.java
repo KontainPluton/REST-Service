@@ -25,4 +25,21 @@ public class RessourcePlace {
         System.out.println("Demande d'un la place " + numeroPlace);
         return new Place(company, idVol, numeroPlace, new Random().nextDouble() * 2000, new Random().nextBoolean());
     }
+
+    @POST
+    @Path("/{numeroPlace}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public boolean bookPlace(@PathParam("company") String company, @PathParam("numeroPlace") int numeroPlace, @PathParam("idVol") int idVol){
+        
+        ArrayList<Place> places = new ArrayList<>();
+        for(Place place : places ){
+            if (place.isAvailable())
+            {
+                place.setAvailable(false);
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
