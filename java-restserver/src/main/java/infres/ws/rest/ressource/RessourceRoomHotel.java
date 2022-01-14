@@ -101,7 +101,7 @@ public class RessourceRoomHotel {
     }
 
     private ManagedChannel getChannel() {
-        return ManagedChannelBuilder.forAddress("localhost", 8080)
+        return ManagedChannelBuilder.forAddress("localhost", 8070)
                 .usePlaintext()
                 .build();
     }
