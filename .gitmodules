@@ -1,0 +1,3 @@
+[submodule "JS-Client"]
+	path = JS-Client
+	url = https://github.com/KontainPluton/JS-Client
