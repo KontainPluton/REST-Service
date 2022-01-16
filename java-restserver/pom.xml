@@ -123,6 +123,7 @@
               <apiSources>
                 <apiSource>
                   <springmvc>false</springmvc>
+                  <!--Pour la locations il ne faudrait pas plutôt le diriger vers nos ressources "./java-resyserver/src\main/java" ?-->
                   <locations><location>com.github.kongchen.swagger.sample.wordnik.resource</location><location>com.github.kongchen.swagger.sample.wordnik.resource2</location></locations>
                 </apiSource>
               </apiSources>
