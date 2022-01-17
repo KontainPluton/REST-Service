@@ -1,6 +1,6 @@
 # REST-Service
 
-[![Language](https://shield.lylium.fr/badge/-Java-007396?logo=java&logoColor=white&style=for-the-badge)](https://openjdk.java.net/)
+[![Language](https://shield.lylium.fr:/github/languages/top/KontainPluton/REST-Service?color=007396&logo=java&logoColor=white&labelColor=bd7509&style=for-the-badge)](https://openjdk.java.net/)
 ![Maven](https://shield.lylium.fr/badge/Use-Maven-C71A36?logo=Apache-Maven&logoColor=white&style=for-the-badge)
 ![Tomcat Version](https://shield.lylium.fr/badge/Use-Tomcat_9.0-F8DC75?logo=Apache-Tomcat&logoColor=white&style=for-the-badge)
 
