@@ -2,22 +2,15 @@ package infres.ws.rest.ressource;
 
 import infres.ws.grpc.BookHotelRoomGrpc;
 import infres.ws.grpc.BookHotelRoomOuterClass;
-import infres.ws.rest.object.Company;
 import infres.ws.rest.object.RoomHotel;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import org.json.JSONObject;
 
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import javax.json.Json;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import java.util.ArrayList;
+import java.util.List;
 
 @Path("/notsecurised/rooms")
 public class RessourceRoomHotelNotSecurised {
@@ -100,7 +93,7 @@ public class RessourceRoomHotelNotSecurised {
     }
 
     private ManagedChannel getChannel() {
-        return ManagedChannelBuilder.forAddress("localhost", 8070)
+        return ManagedChannelBuilder.forAddress("host.docker.internal", 8070)
                 .usePlaintext()
                 .build();
     }

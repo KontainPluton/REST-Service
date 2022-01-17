@@ -1,9 +1,9 @@
 package infres.ws.rest.object;
 
+import infres.ws.grpc.BookHotelRoomOuterClass;
+
 import javax.json.bind.annotation.JsonbProperty;
 import javax.xml.bind.annotation.XmlRootElement;
-
-import infres.ws.grpc.BookHotelRoomOuterClass;
 
 @XmlRootElement
 public class RoomHotel {
