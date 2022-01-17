@@ -8,3 +8,12 @@
 ![Contributor](https://shield.lylium.fr:/github/contributors/KontainPluton/REST-Service?style=for-the-badge)
 ![GitHub last commit](https://shield.lylium.fr:/github/last-commit/KontainPluton/REST-Service?style=for-the-badge)
 
+*[Test project for a course at ITM]*
+
+## Information
+
+**Java** service with **Maven** and **Tomcat 9.0**.
+This service uses Jersey and implements a test Rest API to query flights, airlines and seats. The service is connected with a gRPC API to a service allowing to book hotels.
+
+## Setup
+
