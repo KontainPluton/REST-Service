@@ -1,0 +1,1 @@
+https://app.swaggerhub.com/apis/Mydalia/swagger-maven_plugin_api_rest/v1
