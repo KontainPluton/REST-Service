@@ -1,6 +1,7 @@
 package infres.ws.rest.ressource;
 
 import infres.ws.rest.object.Vol;
+import io.swagger.annotations.*;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -10,6 +11,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.Date;
 
 @Path("/notsecurised/compagnies/{company}/vols")
+@Api(value = "/notsecurised/compagnies/{company}/vols")
 public class RessourceVolNotSecurised {
 
     @GET
