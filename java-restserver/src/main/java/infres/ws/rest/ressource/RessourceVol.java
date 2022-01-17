@@ -1,6 +1,7 @@
 package infres.ws.rest.ressource;
 
 import infres.ws.rest.object.Vol;
+import io.swagger.annotations.Api;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -9,6 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.Date;
 
+@Api(value ="compagnies/{company}/vols")
 @Path("compagnies/{company}/vols")
 public class RessourceVol {
 

@@ -6,6 +6,8 @@ import infres.ws.rest.object.Company;
 import infres.ws.rest.object.RoomHotel;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.swagger.annotations.Api;
+
 import org.json.JSONObject;
 
 import java.io.InputStreamReader;
@@ -19,6 +21,7 @@ import javax.ws.rs.core.MediaType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+@Api(value = "/rooms")
 @Path("/rooms")
 public class RessourceRoomHotel {
 
