@@ -8,8 +8,8 @@ import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.List;
 
-@Path("/securised/compagnies/{company}/vols/{idVol}/places")
-public class RessourcePlace {
+@Path("/notsecurised/compagnies/{company}/vols/{idVol}/places")
+public class RessourcePlaceNotSecurised {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

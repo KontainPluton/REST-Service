@@ -19,8 +19,8 @@ import javax.ws.rs.core.MediaType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@Path("/securised/rooms")
-public class RessourceRoomHotel {
+@Path("/notsecurised/rooms")
+public class RessourceRoomHotelNotSecurised {
 
     @GET
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })

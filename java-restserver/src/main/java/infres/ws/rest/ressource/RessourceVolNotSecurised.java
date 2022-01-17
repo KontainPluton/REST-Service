@@ -9,8 +9,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.Date;
 
-@Path("/securised/compagnies/{company}/vols")
-public class RessourceVol {
+@Path("/notsecurised/compagnies/{company}/vols")
+public class RessourceVolNotSecurised {
 
     @GET
     @Produces(MediaType.TEXT_HTML)

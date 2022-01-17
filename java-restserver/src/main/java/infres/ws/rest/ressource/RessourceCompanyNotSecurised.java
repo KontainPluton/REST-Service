@@ -9,8 +9,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.Random;
 
-@Path("/securised/compagnies")
-public class RessourceCompany {
+@Path("/notsecurised/compagnies")
+public class RessourceCompanyNotSecurised {
 
     @GET
     @Produces(MediaType.TEXT_HTML)
