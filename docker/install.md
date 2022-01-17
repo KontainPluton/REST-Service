@@ -12,5 +12,5 @@ mvn install
 - Move this file into docker folder.
 
 ```
-    docker build -f .\restApi.DockerFile . -t bookme
+    docker build -f .\Dockerfile . -t bookme
 ```
