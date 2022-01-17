@@ -30,8 +30,11 @@ This service uses Jersey and implements a test Rest API to query flights, airlin
 
 - Have Java 1.8 (jdk) installed (https://openjdk.java.net/install/)
 - Have Apache Maven installed (https://maven.apache.org/download.cgi)
-- Have Apache Tomcat 9.0 installed (doesn't work with Tomcat 10.x) (https://tomcat.apache.org/download-90.cgi)
+- Have Apache Tomcat 9.0 installed (run on paort 8090) (doesn't work with Tomcat 10.x) (https://tomcat.apache.org/download-90.cgi)
 - Have Keycloak server installed (***localhost:8080***) (https://www.keycloak.org/downloads) (we will configure the realm and the clients in this part)
+
+If you want to have the hotel reservation part, please install and start the gRPC service on this git Repository : 
+[![Api provided](https://shield.lylium.fr/badge/GitHub-gRPC--Service-00afac?logo=GitHub&logoColor=white&style=flat-square)](https://github.com/KontainPluton/gRPC-Service)
 
 #### **Configure Keycloak server :**
 
@@ -79,3 +82,32 @@ Then you can follow the guide (https://www.katacoda.com/keycloak/courses/keycloa
 - Create a role : `user`
 - Create a user : `test` (password: test) (non-temporary password)
 - Assign the role `user` to the `test` user
+
+---
+
+#### **Install Keycloak adapter for Tomcat :**
+
+Download the Keycloak tomcat adapter here : https://www.keycloak.org/downloads
+Then you can follow the guide here : https://www.keycloak.org/docs/latest/securing_apps/#_tomcat_adapter
+
+---
+
+#### **Build the REST-Service**
+
+- Go into `java-restserver` folder.
+- Run : `mvn clean`
+- Run : `mvn install`
+- Go into `target/java-restserver/META-INF` folder.
+
+If there is no `context.xml` in this folder, add it from the folder: `java-restserver/src/main/resources/META-INF/` (from the repository root folder). Then rebuild the project (`mvn install`).
+
+Finally, find the `java-restserver.war` file (maven target folder), and move it into your tomcat webapps folder.
+
+(For Linux, it's by default : `$CATALINA_HOME/webapps/`)
+
+---
+
+If you run tomcat, you can access : 
+- JS-Client (front-end) : http://localhost:8090/java-restserver/JS-Client/
+- REST API (unsecure) : http://localhost:8090/java-restserver/api/notsecurised/
+- REST API (secure, so you need keycloak access_token) : http://localhost:8090/java-restserver/api/securised/
