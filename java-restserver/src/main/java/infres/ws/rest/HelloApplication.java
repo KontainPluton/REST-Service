@@ -10,14 +10,16 @@ import java.util.Set;
 @ApplicationPath("/api")
 public class HelloApplication extends Application {
 
-    private final Set<Object> singletons = new HashSet<>();
-
-    public HelloApplication() {
-        singletons.add(new CORSFilter());
-    }
-
-    @Override
-    public Set<Object> getSingletons() {
-        return singletons;
-    }
+    /*
+     * private final Set<Object> singletons = new HashSet<>();
+     * 
+     * public HelloApplication() {
+     * singletons.add(new CORSFilter());
+     * }
+     * 
+     * @Override
+     * public Set<Object> getSingletons() {
+     * return singletons;
+     * }
+     */
 }
