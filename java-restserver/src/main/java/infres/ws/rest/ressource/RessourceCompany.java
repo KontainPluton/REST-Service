@@ -1,6 +1,7 @@
 package infres.ws.rest.ressource;
 
 import infres.ws.rest.object.Company;
+import io.swagger.annotations.*;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -10,6 +11,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.Random;
 
 @Path("/securised/compagnies")
+@Api(value="/securised/compagnies")
 public class RessourceCompany {
 
     @GET

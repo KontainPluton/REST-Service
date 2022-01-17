@@ -5,6 +5,8 @@ import infres.ws.grpc.BookHotelRoomOuterClass;
 import infres.ws.rest.object.RoomHotel;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.swagger.annotations.Api;
+
 import org.json.JSONObject;
 
 import javax.ws.rs.*;
@@ -12,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.List;
 
+@Api(value = "/securised/rooms")
 @Path("/securised/rooms")
 public class RessourceRoomHotel {
 

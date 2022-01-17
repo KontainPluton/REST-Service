@@ -2,12 +2,14 @@ package infres.ws.rest.ressource;
 
 import infres.ws.Bdd;
 import infres.ws.rest.object.Place;
+import io.swagger.annotations.Api;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.List;
 
+@Api(value="/securised/compagnies/{company}/vols/{idVol}/places")
 @Path("/securised/compagnies/{company}/vols/{idVol}/places")
 public class RessourcePlace {
 

@@ -1,0 +1,305 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "This is a sample for swagger-maven-plugin rest",
+    "version" : "v1",
+    "title" : "Swagger Maven Plugin API REST"
+  },
+  "tags" : [ {
+    "name" : "compagnies"
+  }, {
+    "name" : "compagnies{company}vols"
+  }, {
+    "name" : "compagnies{company}vols{idVol}places"
+  }, {
+    "name" : "rooms"
+  } ],
+  "paths" : {
+    "/compagnies" : {
+      "get" : {
+        "tags" : [ "compagnies" ],
+        "operationId" : "getAllCompany",
+        "produces" : [ "text/html" ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/compagnies/{company}" : {
+      "get" : {
+        "tags" : [ "compagnies" ],
+        "operationId" : "getCompany",
+        "produces" : [ "application/xml", "application/json" ],
+        "parameters" : [ {
+          "name" : "company",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Company"
+            }
+          }
+        }
+      }
+    },
+    "/compagnies/{company}/vols" : {
+      "get" : {
+        "tags" : [ "compagnies{company}vols" ],
+        "operationId" : "getAllVol",
+        "produces" : [ "text/html" ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/compagnies/{company}/vols/{idVol}" : {
+      "get" : {
+        "tags" : [ "compagnies{company}vols" ],
+        "operationId" : "getVol",
+        "produces" : [ "application/xml", "application/json" ],
+        "parameters" : [ {
+          "name" : "company",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "idVol",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Vol"
+            }
+          }
+        }
+      }
+    },
+    "/compagnies/{company}/vols/{idVol}/places" : {
+      "get" : {
+        "tags" : [ "compagnies{company}vols{idVol}places" ],
+        "operationId" : "getAllPlace",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "company",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "idVol",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Place"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/compagnies/{company}/vols/{idVol}/places/{numeroPlace}" : {
+      "get" : {
+        "tags" : [ "compagnies{company}vols{idVol}places" ],
+        "operationId" : "getPlace",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "numeroPlace",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Place"
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "compagnies{company}vols{idVol}places" ],
+        "operationId" : "bookPlace",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "numeroPlace",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/rooms" : {
+      "get" : {
+        "tags" : [ "rooms" ],
+        "operationId" : "getAllRooms",
+        "produces" : [ "application/json", "application/xml" ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/RoomHotel"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rooms/{roomNumber}" : {
+      "get" : {
+        "tags" : [ "rooms" ],
+        "operationId" : "getRoom",
+        "produces" : [ "application/xml", "application/json" ],
+        "parameters" : [ {
+          "name" : "roomNumber",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/RoomHotel"
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "rooms" ],
+        "operationId" : "bookRoom",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "roomNumber",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "boolean"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Company" : {
+      "type" : "object",
+      "properties" : {
+        "company" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "Place" : {
+      "type" : "object",
+      "properties" : {
+        "company" : {
+          "type" : "string"
+        },
+        "idVol" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "numPlace" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "price" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "available" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "RoomHotel" : {
+      "type" : "object",
+      "properties" : {
+        "roomNumber" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "type" : {
+          "type" : "string",
+          "enum" : [ "BASIQUE", "MIDL_GAMME", "HAUT_GAMME", "UNRECOGNIZED" ]
+        },
+        "price" : {
+          "type" : "number",
+          "format" : "float"
+        }
+      }
+    },
+    "Vol" : {
+      "type" : "object",
+      "properties" : {
+        "company" : {
+          "type" : "string"
+        },
+        "numVol" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "date" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "aeroportDepart" : {
+          "type" : "string"
+        },
+        "aeroportArrive" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}
