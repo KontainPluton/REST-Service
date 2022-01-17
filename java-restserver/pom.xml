@@ -189,9 +189,13 @@
                   <springmvc>false</springmvc>
                   <locations>
                   <location>infres.ws.rest.ressource.RessourceCompany</location>
+                  <location>infres.ws.rest.ressource.RessourceCompanyNotSecurised</location>
                   <location>infres.ws.rest.ressource.RessourcePlace</location>
+                  <location>infres.ws.rest.ressource.RessourcePlaceNotSecurised</location>
                   <location>infres.ws.rest.ressource.RessourceRoomHotel</location>
+                  <location>infres.ws.rest.ressource.RessourceRoomHotelNotSecurised</location>
                   <location>infres.ws.rest.ressource.RessourceVol</location>
+                  <location>infres.ws.rest.ressource.RessourceVolNotSecurised</location>
                   </locations>
                   <info>
                       <title>Swagger Maven Plugin API REST</title>
