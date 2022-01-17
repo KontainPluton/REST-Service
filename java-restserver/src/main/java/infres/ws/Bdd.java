@@ -21,7 +21,7 @@ public class Bdd {
         vols = new ArrayList<>();
         places = new ArrayList<>();
         for(int i = 0; i < 5; i++) {
-            companies.add(new Company("company " + i, i));
+            companies.add(new Company("company_" + i, i));
         }
         for(int i = 0; i < 20; i++)  {
             vols.add(new Vol(companies.get(i%5).getCompany(), i, new Date(), "Paris " + i, "Uzes " + i));

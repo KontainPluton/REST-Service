@@ -10,8 +10,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.Date;
 
-@Api(value ="compagnies/{company}/vols")
-@Path("compagnies/{company}/vols")
+@Api(value ="/securised/compagnies/{company}/vols")
+@Path("/securised/compagnies/{company}/vols")
 public class RessourceVol {
 
     @GET
@@ -22,7 +22,7 @@ public class RessourceVol {
 
     @GET
     @Path("/{idVol}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
     public Vol getVol(@PathParam("company") String company, @PathParam("idVol") int idVol) {
         return new Vol(company, idVol, new Date(), "Paris", "Uzes");
     }

@@ -2,7 +2,6 @@ package infres.ws.rest.ressource;
 
 import infres.ws.grpc.BookHotelRoomGrpc;
 import infres.ws.grpc.BookHotelRoomOuterClass;
-import infres.ws.rest.object.Company;
 import infres.ws.rest.object.RoomHotel;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
@@ -10,34 +9,27 @@ import io.swagger.annotations.Api;
 
 import org.json.JSONObject;
 
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import javax.json.Json;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import java.util.ArrayList;
+import java.util.List;
 
-@Api(value = "/rooms")
-@Path("/rooms")
+@Api(value = "/securised/rooms")
+@Path("/securised/rooms")
 public class RessourceRoomHotel {
 
     @GET
-    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public List<RoomHotel> getAllRooms() {
         ArrayList<RoomHotel> rooms = new ArrayList<>();
         ManagedChannel channel = getChannel();
 
         BookHotelRoomGrpc.BookHotelRoomBlockingStub bookHotelRoomService = BookHotelRoomGrpc.newBlockingStub(channel);
-        BookHotelRoomOuterClass.Empty empty= BookHotelRoomOuterClass.Empty.newBuilder().build();
+        BookHotelRoomOuterClass.Empty empty = BookHotelRoomOuterClass.Empty.newBuilder().build();
 
         BookHotelRoomOuterClass.RoomNumbers roomNumbers = bookHotelRoomService.getAllRoom(empty);
 
-
-        for(BookHotelRoomOuterClass.RoomNumber room : roomNumbers.getRoomNumberList()) {
+        for (BookHotelRoomOuterClass.RoomNumber room : roomNumbers.getRoomNumberList()) {
             rooms.add(getRoom(room.getNumero()));
         }
 
@@ -47,7 +39,7 @@ public class RessourceRoomHotel {
 
     @GET
     @Path("/{roomNumber}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
     public RoomHotel getRoom(@PathParam("roomNumber") int roomNumber) {
         ManagedChannel channel = getChannel();
 
@@ -104,7 +96,7 @@ public class RessourceRoomHotel {
     }
 
     private ManagedChannel getChannel() {
-        return ManagedChannelBuilder.forAddress("localhost", 8070)
+        return ManagedChannelBuilder.forAddress("host.docker.internal", 8070)
                 .usePlaintext()
                 .build();
     }

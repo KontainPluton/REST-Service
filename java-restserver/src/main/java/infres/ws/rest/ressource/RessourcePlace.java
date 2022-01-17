@@ -9,8 +9,8 @@ import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.List;
 
-@Api(value="compagnies/{company}/vols/{idVol}/places")
-@Path("compagnies/{company}/vols/{idVol}/places")
+@Api(value="/securised/compagnies/{company}/vols/{idVol}/places")
+@Path("/securised/compagnies/{company}/vols/{idVol}/places")
 public class RessourcePlace {
 
     @GET
@@ -21,11 +21,11 @@ public class RessourcePlace {
 
     @GET
     @Path("/{numeroPlace}")
-    @Produces({MediaType.APPLICATION_JSON})
+    @Produces({ MediaType.APPLICATION_JSON })
     public Place getPlace(@PathParam("numeroPlace") int numeroPlace) {
         ArrayList<Place> places = Bdd.getInstance().getPlaces();
-        for(Place place : places ){
-            if(place.getNumPlace() == numeroPlace) {
+        for (Place place : places) {
+            if (place.getNumPlace() == numeroPlace) {
                 return place;
             }
         }
@@ -35,11 +35,10 @@ public class RessourcePlace {
     @POST
     @Path("/{numeroPlace}")
     @Produces(MediaType.APPLICATION_JSON)
-    public boolean bookPlace(@PathParam("numeroPlace") int numeroPlace){
+    public boolean bookPlace(@PathParam("numeroPlace") int numeroPlace) {
         ArrayList<Place> places = Bdd.getInstance().getPlaces();
-        for(Place place : places ){
-            if (place.getNumPlace() == numeroPlace && place.isAvailable())
-            {
+        for (Place place : places) {
+            if (place.getNumPlace() == numeroPlace && place.isAvailable()) {
                 place.setAvailable(false);
                 return true;
             }
