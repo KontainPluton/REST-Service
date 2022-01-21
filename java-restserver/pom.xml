@@ -88,6 +88,7 @@
       <artifactId>swagger-hibernate-validations</artifactId>
       <version>1.5.6</version>
     </dependency>
+    <!--
     <dependency>
       <groupId>io.swagger</groupId>
       <artifactId>swagger-core</artifactId>
@@ -126,7 +127,7 @@
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-multipart</artifactId>
             <version>${jersey2-version}</version>
-        </dependency>
+        </dependency>-->
   </dependencies>
 
 <pluginRepositories>
