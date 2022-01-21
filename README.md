@@ -22,6 +22,10 @@ This service uses Jersey and implements a test Rest API to query flights, airlin
 
 By default, this project is configured to run with docker. You will only have to change the path to your keycloak-realm.json file in the docker-compose file ("docker/global-docker/docker-compose"). To run project, you can choose to use the **docker-compose** file, or the **DockerFile** of each service. (docker image are not stored on docker hub, you will have to build them with DockerFile first)
 
+If you want to use keycloak (dockerised) you need to create users.
+Refer to the tutorial in the Configure Keycloack Server part, to create a user (id: test & pwd: test, for example)
+https://github.com/KontainPluton/REST-Service#configure-keycloak-server-
+
 ---
 
 ### Without Docker
