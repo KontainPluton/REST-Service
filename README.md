@@ -101,6 +101,10 @@ Then you can follow the guide here : https://www.keycloak.org/docs/latest/securi
 #### **Build the REST-Service**
 
 - Go into `java-restserver` folder.
+- Go into `src/main/webapp/` folder.
+- In `WEB-INF/keycloack.json`, change `http://host.docker.internal:8080/auth/` to `http://localhost:8080/auth`
+- In `JS-Client/keycloack.json`, change `http://host.docker.internal:8080/auth/` to `http://localhost:8080/auth`
+- Go back to the first folder : `java-restserver`
 - Run : `mvn clean`
 - Run : `mvn install`
 - Go into `target/java-restserver/META-INF` folder.
