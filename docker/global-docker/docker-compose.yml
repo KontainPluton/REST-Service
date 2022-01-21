@@ -12,8 +12,9 @@ services:
       - KEYCLOAK_USER=admin
       - KEYCLOAK_PASSWORD=admin
       - KEYCLOAK_IMPORT=/tmp/keycloak-realm.json -Dkeycloak.profile.feature.upload_scripts=enabled
-  rest-server:
+  rest:
     image: bookme #registry.infres.fr/bookme
     build: .
+    container_name: "bookme"
     ports:
       - "8090:8080"
