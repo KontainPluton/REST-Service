@@ -102,8 +102,8 @@ Then you can follow the guide here : https://www.keycloak.org/docs/latest/securi
 
 - Go into `java-restserver` folder.
 - Go into `src/main/webapp/` folder.
-- In `WEB-INF/keycloack.json`, change `http://host.docker.internal/auth/` to `http://localhost:8080/auth`
-- In `JS-Client/keycloack.json`, change `http://host.docker.internal/auth/` to `http://localhost:8080/auth`
+- In `WEB-INF/keycloack.json`, change `http://host.docker.internal:8080/auth/` to `http://localhost:8080/auth`
+- In `JS-Client/keycloack.json`, change `http://host.docker.internal:8080/auth/` to `http://localhost:8080/auth`
 - Go back to the first folder : `java-restserver`
 - Run : `mvn clean`
 - Run : `mvn install`
