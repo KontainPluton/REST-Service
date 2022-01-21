@@ -20,7 +20,7 @@ This service uses Jersey and implements a test Rest API to query flights, airlin
 
 ### With Docker ![Docker](https://shield.lylium.fr/badge/-Docker-2496ED?logo=docker&logoColor=white&style=f&style=flat-square)
 
-**TODO : ECRIRE LA PROCEDURE**
+By default, this project is configured to run with docker. You will only have to run the **docker-compose** file, or the **DockerFile** of the rest server and keycloak server. (docker image are not stored on docker image on docker hub, you will have to build them with DockerFile first)
 
 ---
 
@@ -35,6 +35,8 @@ This service uses Jersey and implements a test Rest API to query flights, airlin
 
 If you want to have the hotel reservation part, please install and start the gRPC service on this git Repository : 
 [![Api provided](https://shield.lylium.fr/badge/GitHub-gRPC--Service-00afac?logo=GitHub&logoColor=white&style=flat-square)](https://github.com/KontainPluton/gRPC-Service)
+
+You also will have to change the environment variable **USE_DOCKER** in Environment.java to false and eventualy change the grpc server adress
 
 #### **Configure Keycloak server :**
 
