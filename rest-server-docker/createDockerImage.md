@@ -1,4 +1,4 @@
-# HELP ME
+# Create docker image with DockerFile
 
 - You need to build `java-restserver.war`. Go in java-restserver folder.
 
