@@ -1,5 +1,6 @@
 package infres.ws.rest.ressource;
 
+import infres.ws.Environment;
 import infres.ws.grpc.BookHotelRoomGrpc;
 import infres.ws.grpc.BookHotelRoomOuterClass;
 import infres.ws.rest.object.RoomHotel;
@@ -96,7 +97,7 @@ public class RessourceRoomHotel {
     }
 
     private ManagedChannel getChannel() {
-        return ManagedChannelBuilder.forAddress("host.docker.internal", 8070)
+        return ManagedChannelBuilder.forAddress(Environment.GRCP_SERVER_ADRESS, 8070)
                 .usePlaintext()
                 .build();
     }
