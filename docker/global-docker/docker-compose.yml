@@ -7,7 +7,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - C:\Users\tomlh\Desktop\Cours\S7\Web_service_avancee\rest\REST-Service\keycloak\keycloak-realm.json:/tmp/keycloak-realm.json
+      - your_path\keycloak\keycloak-realm.json:/tmp/keycloak-realm.json #change your_path 
     environment:
       - KEYCLOAK_USER=admin
       - KEYCLOAK_PASSWORD=admin
